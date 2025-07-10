@@ -1,8 +1,7 @@
 function sumarNumeros(numero1, numero2) {
-    return Number(numero1) + Number(numero2);
+    if (typeof numero1 != 'number' || typeof numero2 != 'number')
+        throw Error("Solo aceptamos números");
+    return numero1 + numero2;
 }
-
-const resultado = sumarNumeros(100,200);
-console.log(resultado);
 
 module.exports = {sumarNumeros}

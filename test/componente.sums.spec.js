@@ -6,4 +6,9 @@ describe("Verificar el componente de suma de 2 numeros", () => {
       const resultado = sumarNumeros(100,201);
       expect(resultado).toBe(301);
     });
+
+    test("Sumar un número positivo y uno negativo", () => {
+      const resultado = sumarNumeros(100,-50);
+      expect(resultado).toBe(50);
+    });
 });

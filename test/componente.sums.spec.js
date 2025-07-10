@@ -11,4 +11,9 @@ describe("Verificar el componente de suma de 2 numeros", () => {
       const resultado = sumarNumeros(100,-50);
       expect(resultado).toBe(50);
     });
+
+    test("Sumar 2 números sin validar tipo", () => {
+      const resultado = sumarNumeros(1,"1");
+      expect(resultado).toBe(2);
+    });
 });

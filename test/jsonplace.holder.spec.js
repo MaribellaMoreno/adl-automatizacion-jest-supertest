@@ -2,6 +2,10 @@ const request = require('supertest');
 
 const baseUrl = 'https://dummyjson.com';
 const idProductoParaTest = 1;
+ const product = {
+            title: 'Iphone 18',
+            price:500
+        };
 
 describe("Verificar Modelo Products de DummyJSON", () => {
 
@@ -21,11 +25,7 @@ describe("Verificar Modelo Products de DummyJSON", () => {
 
     //Prueva de inserción con POST
     test("Validar inserción de producto", async () => {
-        const product = {
-            title: 'Iphone 18',
-            price:500
-        };
-        
+       
         const response = await request(baseUrl).post(`/products/add`).send(product);
 
         expect(response.statusCode).toBe(201);
@@ -33,5 +33,16 @@ describe("Verificar Modelo Products de DummyJSON", () => {
         expect(response.body).toHaveProperty("id");
         expect(response.body.price).toBe(product.price);
     });
+
+    //Prueva actualizacion de producto con PUT
+    test("Actualizacion de producto", async () => {
+        const response = await request(baseUrl).patch(`/products/${idProductoParaTest}`).send(product);
+
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toBeInstanceOf(Object);
+        expect(response.body).toHaveProperty("id");
+        expect(response.body.id).toEqual(idProductoParaTest);
+    });
+
 
 });

@@ -44,5 +44,15 @@ describe("Verificar Modelo Products de DummyJSON", () => {
         expect(response.body.id).toEqual(idProductoParaTest);
     });
 
+    //Prueva borrar producto con DELETE
+    test("Borrado de producto", async () => {
+        const response = await request(baseUrl).delete(`/products/${idProductoParaTest}`);
+
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toBeInstanceOf(Object);
+        expect(response.body).toHaveProperty("isDeleted", true);
+        expect(response.body.id).toEqual(idProductoParaTest);
+    });
+
 
 });

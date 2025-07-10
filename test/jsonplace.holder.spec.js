@@ -18,4 +18,20 @@ describe("Verificar Modelo Products de DummyJSON", () => {
         const response = await request(baseUrl).get(`/products/${idProductoParaTest}`);
         expect(response.body.title).toBe(nombreEsperado);
     });
+
+    //Prueva de inserción con POST
+    test("Validar inserción de producto", async () => {
+        const product = {
+            title: 'Iphone 18',
+            price:500
+        };
+        
+        const response = await request(baseUrl).post(`/products/add`).send(product);
+
+        expect(response.statusCode).toBe(201);
+        expect(response.body).toBeInstanceOf(Object);
+        expect(response.body).toHaveProperty("id");
+        expect(response.body.price).toBe(product.price);
+    });
+
 });

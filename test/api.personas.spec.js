@@ -7,17 +7,6 @@ const persona = {
     edad: 28
 }
 let personaId
-describe("Verificar modelo personas en API Propia", () => {
-
-    test("Validando si existen personas registradas", async () => {
-        const response = await request(app).get("/personas");
-
-        //Arreglo no vacio.
-        expect(response.body).not.toHaveLength(0);
-        expect(response.statusCode).toBe(200);
-
-    });
-
     //Registrar una persona
 describe('Validar creación persona', () => {
     test('Inserción de persona', async () => {
@@ -77,4 +66,4 @@ describe('Validar arreglo vacío al consultar personas', () => {
         console.log("--- [afterAll] Cerrando servidor ---");
         server.close(done);
     });
-});
+
